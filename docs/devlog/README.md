@@ -6,5 +6,4 @@
 *
 ********************************************************
 
-08/04/2024
-Started this project and repo. Have the parts ready to order but waiting to return from vacation.
+This folder contains a running log of my development process. Noted is what was done during sessions, issues encountered, and solutions to those issues.
