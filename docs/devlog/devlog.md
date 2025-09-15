@@ -8,10 +8,10 @@
 
 
 ## Tuesday 9/2 (Day 1)
-### Modules Completed
-- Module 1 – Setup & Hello World  
-- Module 2 – Publisher & Subscriber Basics  
-- Module 3 – Putting It Together  
+### Goals Completed
+- Setup & Hello World  
+- Publisher & Subscriber Basics  
+- Putting It Together  
 
 ### Key Notes
 - Workspace built cleanly with new `learn_ros2_py` package.  
@@ -24,8 +24,8 @@
 
 
 ## Wednesday 9/3 (Day 2)
-### Modules Completed
-- Module 4 – Quality of Service (QoS)  
+### Goals Completed
+- Quality of Service (QoS)  
 
 ### Key Notes
 - Learned default QoS profile shorthand in `create_publisher(..., 10)`.  
@@ -39,7 +39,7 @@
 
 
 ## Saturday 9/6 (Day 3)
-### Modules Completed
+### Goals Completed
 - Learned about services in ROS2: one-off request/response instead of continuous streams.
 - Created adder_service.py:
     - Built a Node with create_service.
@@ -52,7 +52,7 @@ Takeaway: I can now write and run my own ROS2 service nodes, and I understand ho
 
 
 ## Saturday 9/10 (Day 4)
-### Modules Completed
+### Goals Completed
 - Declared parameters in a node (declare_parameter), giving them default values.
 - Read parameters at startup (get_parameter(...).get_parameter_value()).
 - Overrode defaults at runtime using:
