@@ -51,7 +51,7 @@
 Takeaway: I can now write and run my own ROS2 service nodes, and I understand how services differ from publishers/subscribers.
 
 
-## Saturday 9/10 (Day 4)
+## Wednesday 9/10 (Day 4)
 ### Goals Completed
 - Declared parameters in a node (declare_parameter), giving them default values.
 - Read parameters at startup (get_parameter(...).get_parameter_value()).
@@ -64,3 +64,21 @@ Takeaway: I can now write and run my own ROS2 service nodes, and I understand ho
 - Learned that callbacks must return a SetParametersResult to confirm success.
 
 Takeaway: I can now configure nodes at startup or dynamically while running, making them more flexible and interactive.
+
+
+## Tuesday 9/16
+### Goals Completed
+- Learned how actions extend services for long-running tasks with feedback and a final result.
+- Created an Action Server (FibonacciActionServer) using ActionServer from rclpy.action.
+- Implemented the execute_callback:
+- Read the goal (goal_handle.request.order).
+- Generated Fibonacci numbers in a loop.
+- Published incremental feedback (goal_handle.publish_feedback).
+- Returned a final result (Fibonacci.Result).
+- Fixed goal status by calling goal_handle.succeed() before returning.
+- Verified with CLI:
+    - ros2 action send_goal /fibonacci example_interfaces/action/Fibonacci "{order: 7}" --feedback
+        → saw feedback increments + final result sequence.
+- Looked into cancel handling
+
+Takeaway: I can now create and run ROS2 action servers, understand how they differ from services, and test them with feedback and results using the CLI.
