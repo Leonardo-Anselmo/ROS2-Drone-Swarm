@@ -82,3 +82,17 @@ Takeaway: I can now configure nodes at startup or dynamically while running, mak
 - Looked into cancel handling
 
 Takeaway: I can now create and run ROS2 action servers, understand how they differ from services, and test them with feedback and results using the CLI.
+
+
+## Wednesday 9/17
+### Goals Completed
+- Created a launch/bringup.launch.py file inside the package.
+- Learned that every launch file must define generate_launch_description().
+- Started with one Node() (talker), then added listener.
+- Fixed setup.py so launch files install correctly.
+- Declared launch arguments: topic_name for remapping and publish_rate for the talker’s parameter.
+- Used remappings=[("chatter", topic_name)] so both nodes could switch topic names from CLI.
+- Passed publish_rate into talker so we can change its timer period at launch.
+- Verified by running ros2 launch learn_ros2_py bringup.launch.py topic_name:=news publish_rate:=5.0 and checking messages.
+
+Takeaway: I can now remap topics and pass parameters at launch time, so I don’t have to edit node code or run each node manually.
