@@ -96,3 +96,16 @@ Takeaway: I can now create and run ROS2 action servers, understand how they diff
 - Verified by running ros2 launch learn_ros2_py bringup.launch.py topic_name:=news publish_rate:=5.0 and checking messages.
 
 Takeaway: I can now remap topics and pass parameters at launch time, so I don’t have to edit node code or run each node manually.
+
+
+## Tuesday 9/23
+### Goals Completed
+- Learned what a ComposableNode is: a node designed to be loaded into a shared container process.
+- Saw how to start a container process with component_container_mt.
+- Loaded the demo Talker component into the container from another terminal.
+- Verified that the Talker ran inside the container.
+- Loaded the demo Listener component into the same container.
+- Confirmed Talker and Listener communicated as usual, but now they lived inside a single process.
+- Discussed why this matters: reduced memory footprint, fewer terminals/processes to manage, and faster message passing via intra-process communication (zero-copy).
+
+Takeaway: Compositions let you pack multiple nodes into one container process. From the outside, the ROS2 graph looks the same (topics, subs, pubs), but under the hood you save resources and gain speed. It’s the same nodes, just co-located more efficiently.
