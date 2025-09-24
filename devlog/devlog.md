@@ -1,6 +1,6 @@
 # CREATED BY:   	Leonardo Anselmo
 # DATE CREATED: 	08/04/2025
-# LAST REVISION:	09/04/2025 
+# LAST REVISION:	09/23/2025 
 
 
 ## 08/04/2025 (Day 0)
@@ -109,3 +109,14 @@ Takeaway: I can now remap topics and pass parameters at launch time, so I don’
 - Discussed why this matters: reduced memory footprint, fewer terminals/processes to manage, and faster message passing via intra-process communication (zero-copy).
 
 Takeaway: Compositions let you pack multiple nodes into one container process. From the outside, the ROS2 graph looks the same (topics, subs, pubs), but under the hood you save resources and gain speed. It’s the same nodes, just co-located more efficiently.
+
+
+## Wednesday 9/24
+### Goals Completed
+- Built a LifecycleTalker that starts unconfigured, configures to inactive (sets up pub + timer), then active (publishes only when active).
+- Drove transitions with CLI: configure → activate → deactivate → shutdown.
+- Learned that shutdown finalizes the node but does not auto-exit the Python process (use Ctrl+C or implement a small “exit-on-shutdown” pattern).
+
+Takeaway: Lifecycle nodes give you explicit control over when work starts/stops. Configure resources in on_configure(), actually do work only when active, and use transitions to cleanly pause or shut down.
+
+Future Work: This now marks the end of my personal ROS2 Node introduction course. I will now be continuing to learn simulation with Gazebo.
