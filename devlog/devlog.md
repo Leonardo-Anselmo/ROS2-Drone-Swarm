@@ -1,6 +1,6 @@
 # CREATED BY:   	Leonardo Anselmo
 # DATE CREATED: 	08/04/2025
-# LAST REVISION:	09/23/2025 
+# LAST REVISION:	10/01/2025 
 
 
 ## 08/04/2025 (Day 0)
@@ -159,17 +159,17 @@ Future Work: Once we unify on Python 3.10, the /clock demo should work immediate
 - The last blocker: Terminal D still not echoing messages reliably, even though publisher/subscriber relationships show up correctly.
 
 Status
-✅ Environment and packages are now successfully built.
-✅ Bridge launches and connects.
-⚠️ Topic subscription still flaky on Terminal D (likely QoS or env mismatch).
-⏸️ Session ended after ~2hrs of troubleshooting to avoid burnout.
+- ✅ Environment and packages are now successfully built.
+- ✅ Bridge launches and connects.
+- ⚠️ Topic subscription still flaky on Terminal D (likely QoS or env mismatch).
+- ⏸️ Session ended after ~2hrs of troubleshooting to avoid burnout.
 
-Future Work
+Future Work:
 - Double-check ROS_LOCALHOST_ONLY=1 is exported in all four terminals before launching.
 - Run in order:
-    A: gz sim -s
-    B: gz sim -g
-    C: run bridge with shim (DYLD_INSERT_LIBRARIES).
-    D: ros2 topic echo /clock --no-daemon
+    1. A: gz sim -s
+    2. B: gz sim -g
+    3. C: run bridge with shim (DYLD_INSERT_LIBRARIES).
+    4. D: ros2 topic echo /clock --no-daemon
 - If still silent → try ros2 topic hz /clock --no-daemon (to see if it’s timing out or just not printing).
 - If that fails → test with another simple topic (/rosout or /parameter_events) to see if ros2 topic echo is working at all.
