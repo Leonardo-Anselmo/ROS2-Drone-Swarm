@@ -120,3 +120,56 @@ Takeaway: Compositions let you pack multiple nodes into one container process. F
 Takeaway: Lifecycle nodes give you explicit control over when work starts/stops. Configure resources in on_configure(), actually do work only when active, and use transitions to cleanly pause or shut down.
 
 Future Work: This now marks the end of my personal ROS2 Node introduction course. I will now be continuing to learn simulation with Gazebo.
+
+
+## Thursday 9/25
+### Goals Completed
+- Created a clean sim_ws workspace (out of cloud-sync — good).
+- Built ros_gz_interfaces from source (OK).
+- Installed Gazebo/Ignition libs via conda-forge (libignition-transport11, libignition-msgs8, etc.).
+- Cloned and built missing deps: actuator_msgs, gps_msgs, vision_msgs.
+- Built ros_gz_bridge on macOS/Apple Silicon.
+- Hit runtime crash (_PyExc_RuntimeError) when launching the bridge — traced to Python 3.11 vs. libs expecting 3.10.
+- Verified gz sim runs server-only on macOS; GUI complained about OGRE (not needed for our goal).
+
+Takeaways
+- On macOS: run gz sim -s (server) and skip GUI for now.
+- Use conda-forge for Ignition/Gazebo libs on Apple Silicon.
+- Keep one unified env for ROS2 and Gazebo deps; mixing envs caused the symbol error.
+
+Blocker: Bridge binary links into Python symbols; current env is Python 3.11. We need a unified Python 3.10 env with ROS 2 + Ignition.
+
+Future Work: Once we unify on Python 3.10, the /clock demo should work immediately.
+
+
+## Wednesday 10/01 
+### Goals Completed
+- Worked on ROS2 ↔ Gazebo Bridge Setup (Mac M4, ros_humble311 env)
+- Created and tested a new Conda/Mamba environment (ros_humble311) with Python 3.11 to stabilize builds.
+- Successfully rebuilt ros_gz_interfaces, actuator_msgs, gps_msgs, vision_msgs, and ros_gz_bridge.
+- Fixed the dyld: symbol not found '_PyExc_RuntimeError' error by using a Python shim trick:
+    - export DYLD_INSERT_LIBRARIES="$CONDA_PREFIX/lib/libpython3.11.dylib"
+    - This allowed the parameter_bridge binary to run without crashing.
+- Confirmed in Terminal C that the /clock topic was being published and bridged (saw correct publisher/subscriber info).
+- Troubleshot Terminal D (ros2 topic echo /clock):
+    - Initially blocked by daemon errors → switched to --no-daemon.
+    - Then hit discovery issues due to inconsistent ROS_LOCALHOST_ONLY.
+    - Found that some shells had ROS_LOCALHOST_ONLY=0 instead of =1, which broke communication.
+    - Verified that ros_gz_bridge is functional (Terminal C prints “Creating GZ->ROS Bridge” and /clock is discoverable).
+- The last blocker: Terminal D still not echoing messages reliably, even though publisher/subscriber relationships show up correctly.
+
+Status
+✅ Environment and packages are now successfully built.
+✅ Bridge launches and connects.
+⚠️ Topic subscription still flaky on Terminal D (likely QoS or env mismatch).
+⏸️ Session ended after ~2hrs of troubleshooting to avoid burnout.
+
+Future Work
+- Double-check ROS_LOCALHOST_ONLY=1 is exported in all four terminals before launching.
+- Run in order:
+    A: gz sim -s
+    B: gz sim -g
+    C: run bridge with shim (DYLD_INSERT_LIBRARIES).
+    D: ros2 topic echo /clock --no-daemon
+- If still silent → try ros2 topic hz /clock --no-daemon (to see if it’s timing out or just not printing).
+- If that fails → test with another simple topic (/rosout or /parameter_events) to see if ros2 topic echo is working at all.
