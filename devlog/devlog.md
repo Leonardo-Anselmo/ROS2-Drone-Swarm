@@ -159,10 +159,10 @@ Future Work: Once we unify on Python 3.10, the /clock demo should work immediate
 - The last blocker: Terminal D still not echoing messages reliably, even though publisher/subscriber relationships show up correctly.
 
 Status
-- ✅ Environment and packages are now successfully built.
-- ✅ Bridge launches and connects.
-- ⚠️ Topic subscription still flaky on Terminal D (likely QoS or env mismatch).
-- ⏸️ Session ended after ~2hrs of troubleshooting to avoid burnout.
+- Environment and packages are now successfully built.
+- Bridge launches and connects.
+- Topic subscription still flaky on Terminal D (likely QoS or env mismatch).
+- Session ended after ~2hrs of troubleshooting to avoid burnout.
 
 Future Work:
 - Double-check ROS_LOCALHOST_ONLY=1 is exported in all four terminals before launching.
@@ -173,3 +173,78 @@ Future Work:
     4. D: ros2 topic echo /clock --no-daemon
 - If still silent → try ros2 topic hz /clock --no-daemon (to see if it’s timing out or just not printing).
 - If that fails → test with another simple topic (/rosout or /parameter_events) to see if ros2 topic echo is working at all.
+
+
+## Saturday 02/15
+# Crazyflie Hardware Bring-Up (Day 1)
+
+Objective: Move from simulation-only development into real-world experimentation using Crazyflie 2.1 (brushed) platform.
+
+Hardware Setup
+Platform: Crazyflie 2.1 (brushed)
+Radio: Crazyradio 2.0
+Decks: Flow Deck v2, Multi-Ranger Deck
+Environment: 12x16 ft indoor living room test space, Apple Silicon (M4) MacBook, Python CFClient
+
+Assembly
+- Installed 4 brushed motors (correct orientation verified)
+- Mounted Flow Deck v2
+- Mounted Multi-Ranger Deck
+- Installed firmware on Crazyradio 2.0 (CRPA emulation)
+- Verified USB detection on macOS
+- Confirmed radio discovery via cfclient
+- All motors successfully spun on initial power-up.
+
+First Flight Attempts
+- Initial Behavior
+- Drone connected successfully
+- Hover mode enabled
+- Drone attempted stabilization
+- Instability observed
+- Drone fell after ~3–5 seconds
+
+Diagnosis
+- Flow Deck active
+- Hover mode engaged
+- Poor lighting conditions in room
+- Optical flow algorithm requires sufficient surface texture + lighting.
+
+Fix
+- Turned on overhead lighting.
+- Stable hover achieved
+- Maintained position
+- Controlled landing successful
+- No hardware damage
+- Battery ~3.76V
+
+System Confirmed
+- IMU fusion working
+- Optical flow velocity estimation working
+- Z-height control working
+- PID stabilization loop healthy
+
+Key Insight
+- Hover instability was not tuning-related.
+- It was environmental (optical flow sensor performance).
+
+Next Steps
+- Short Term
+    - Repeat hover test
+    - Introduce small manual yaw adjustments
+    - Test small XY displacement and recovery
+    - Measure hover drift
+
+- Mid Term
+    - Log sensor data during hover
+    - Build minimal Python control script (no autopilot)
+    - Begin structured control experiments
+
+- Long Term
+    - Multi-agent formation experiments
+    - ROS2 interface layer
+    - Swarm coordination architecture
+
+Status
+- Day 1: Hardware validated.
+- Flight confirmed.
+- Experimental phase officially started.
