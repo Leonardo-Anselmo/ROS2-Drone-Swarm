@@ -16,6 +16,7 @@ The roadmap emphasizes incremental capability building — progressing from sing
 
 
 **Phase 1 — Single Drone Foundations (Experimental Control Layer)**
+
 Objective: Establish full programmatic control and telemetry over one Crazyflie.
 
 - Validate radio communication and firmware configuration
@@ -31,6 +32,7 @@ Current Status: Active — telemetry and manual flight verified.
 
 
 **Phase 2 — Controlled Autonomy (Single Agent)**
+
 Objective: Move from manual control to scripted behaviors.
 
 - Implement:
@@ -44,6 +46,7 @@ Outcome: A stable, software-controlled single drone with repeatable behavior.
 
 
 **Phase 3 — Relative Localization (UWB Integration)**
+
 Objective: Introduce UWB positioning for spatial awareness.
 
 - Integrate Loco Positioning Deck
@@ -55,6 +58,7 @@ Outcome: Reliable indoor position estimates for autonomous control.
 
 
 **Phase 4 — Dual Drone Communication & Coordination**
+
 Objective: Establish synchronized control across two agents.
 
 - Implement separate control pipelines for two Crazyflies
@@ -68,6 +72,7 @@ Outcome: Coordinated multi-agent behavior in a controlled indoor space.
 
 
 **Phase 5 — Robustness & Expansion**
+
 Objective: Harden the system and extend its capabilities.
 
 - Add safety mechanisms:
@@ -81,6 +86,7 @@ Outcome: A documented dual-drone swarm prototype suitable for portfolio and rese
 
 
 **Key Technologies**
+
 - Crazyflie 2.1 (Brushed platform)
 - Crazyradio 2.0
 - Flow Deck v2
@@ -91,6 +97,7 @@ Outcome: A documented dual-drone swarm prototype suitable for portfolio and rese
 - Embedded control theory principles
 
 **Status**
+
 - Hardware operational
 - Telemetry pipeline functional
 - Entering Phase 1: Experimental Control Layer
