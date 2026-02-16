@@ -28,6 +28,7 @@ Objective: Establish full programmatic control and telemetry over one Crazyflie.
 - Implement scripted hover and basic motion commands
 
 Outcome: A reproducible software pipeline capable of commanding and monitoring a single drone.
+
 Current Status: Active — telemetry and manual flight verified.
 
 
