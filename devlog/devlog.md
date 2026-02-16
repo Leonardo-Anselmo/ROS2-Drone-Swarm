@@ -3,11 +3,11 @@
 # LAST REVISION:	10/01/2025 
 
 
-## 08/04/2025 (Day 0)
+## 08/04/2025
 - Started this project and repo. Have the parts ready to order but waiting to return from vacation.
 
 
-## Tuesday 9/2 (Day 1)
+## Tuesday 09/02/2025
 ### Goals Completed
 - Setup & Hello World  
 - Publisher & Subscriber Basics  
@@ -23,7 +23,7 @@
 - Explore QoS settings in more depth. 
 
 
-## Wednesday 9/3 (Day 2)
+## Wednesday 09/3/2025
 ### Goals Completed
 - Quality of Service (QoS)  
 
@@ -38,7 +38,7 @@
 - Move to Module 5 (Custom Messages).
 
 
-## Saturday 9/6 (Day 3)
+## Saturday 09/06/2025
 ### Goals Completed
 - Learned about services in ROS2: one-off request/response instead of continuous streams.
 - Created adder_service.py:
@@ -51,7 +51,7 @@
 Takeaway: I can now write and run my own ROS2 service nodes, and I understand how services differ from publishers/subscribers.
 
 
-## Wednesday 9/10 (Day 4)
+## Wednesday 09/10/2025
 ### Goals Completed
 - Declared parameters in a node (declare_parameter), giving them default values.
 - Read parameters at startup (get_parameter(...).get_parameter_value()).
@@ -66,7 +66,7 @@ Takeaway: I can now write and run my own ROS2 service nodes, and I understand ho
 Takeaway: I can now configure nodes at startup or dynamically while running, making them more flexible and interactive.
 
 
-## Tuesday 9/16
+## Tuesday 09/16/2025
 ### Goals Completed
 - Learned how actions extend services for long-running tasks with feedback and a final result.
 - Created an Action Server (FibonacciActionServer) using ActionServer from rclpy.action.
@@ -84,7 +84,7 @@ Takeaway: I can now configure nodes at startup or dynamically while running, mak
 Takeaway: I can now create and run ROS2 action servers, understand how they differ from services, and test them with feedback and results using the CLI.
 
 
-## Wednesday 9/17
+## Wednesday 09/17/2025
 ### Goals Completed
 - Created a launch/bringup.launch.py file inside the package.
 - Learned that every launch file must define generate_launch_description().
@@ -98,7 +98,7 @@ Takeaway: I can now create and run ROS2 action servers, understand how they diff
 Takeaway: I can now remap topics and pass parameters at launch time, so I don’t have to edit node code or run each node manually.
 
 
-## Tuesday 9/23
+## Tuesday 09/23/2025
 ### Goals Completed
 - Learned what a ComposableNode is: a node designed to be loaded into a shared container process.
 - Saw how to start a container process with component_container_mt.
@@ -111,7 +111,7 @@ Takeaway: I can now remap topics and pass parameters at launch time, so I don’
 Takeaway: Compositions let you pack multiple nodes into one container process. From the outside, the ROS2 graph looks the same (topics, subs, pubs), but under the hood you save resources and gain speed. It’s the same nodes, just co-located more efficiently.
 
 
-## Wednesday 9/24
+## Wednesday 09/24/2025
 ### Goals Completed
 - Built a LifecycleTalker that starts unconfigured, configures to inactive (sets up pub + timer), then active (publishes only when active).
 - Drove transitions with CLI: configure → activate → deactivate → shutdown.
@@ -122,7 +122,7 @@ Takeaway: Lifecycle nodes give you explicit control over when work starts/stops.
 Future Work: This now marks the end of my personal ROS2 Node introduction course. I will now be continuing to learn simulation with Gazebo.
 
 
-## Thursday 9/25
+## Thursday 09/25/2025
 ### Goals Completed
 - Created a clean sim_ws workspace (out of cloud-sync — good).
 - Built ros_gz_interfaces from source (OK).
@@ -142,7 +142,7 @@ Blocker: Bridge binary links into Python symbols; current env is Python 3.11. We
 Future Work: Once we unify on Python 3.10, the /clock demo should work immediately.
 
 
-## Wednesday 10/01 
+## Wednesday 10/01/2025
 ### Goals Completed
 - Worked on ROS2 ↔ Gazebo Bridge Setup (Mac M4, ros_humble311 env)
 - Created and tested a new Conda/Mamba environment (ros_humble311) with Python 3.11 to stabilize builds.
@@ -175,8 +175,8 @@ Future Work:
 - If that fails → test with another simple topic (/rosout or /parameter_events) to see if ros2 topic echo is working at all.
 
 
-## Saturday 02/15
-# Crazyflie Hardware Bring-Up (Day 1)
+## Saturday 02/14/2026
+### Crazyflie Hardware Bring-Up
 
 Objective: Move from simulation-only development into real-world experimentation using Crazyflie 2.1 (brushed) platform.
 
@@ -248,3 +248,15 @@ Status
 - Day 1: Hardware validated.
 - Flight confirmed.
 - Experimental phase officially started.
+
+
+## Sunday 02/15/2026
+### Telemetry Pipeline Online
+
+- Implemented and successfully ran a Python battery monitoring tool using cflib.
+- Connected to Crazyflie over Crazyradio 2.0
+- Completed full connection handshake (TOC + param update)
+- Started log stream and received live battery telemetry
+- Verified stable voltage (~4.10 V)
+- Confirmed end-to-end: hardware → radio → Python API → terminal output
+- No flight testing today — focus was purely on programmatic connection and telemetry.
