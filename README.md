@@ -10,45 +10,88 @@ When complete, this project will serve as an example of applied robotics, embedd
 
 
 ***Project Roadmap***
-This project aims to design and implement an autonomous dual-drone swarm system using ROS2 and ultra wideband (UWB) localization. The goal is to demonstrate reliable flight behavior both in simulation and hardware testing.
+This project follows a hardware-first experimental approach using Crazyflie platforms as the initial development vehicle. Simulation will support experimentation when necessary, but real-world testing drives system validation.
 
-The roadmap is divided into progressive milestones, each building toward a maintainable system that reflects industry best practices in robotics, embedded systems, and autonomous navigation.
+The roadmap emphasizes incremental capability building — progressing from single-drone control to coordinated multi-agent behavior.
 
-**Phase 1 — System Design & Environment Setup**
 
-- Define system architecture, including control loops, communication layers, and fail safe mechanisms
-- Establish ROS2 workspace with dynamic node structure
-- Configure Gazebo simulation environment with drone models and UWB anchor emulation
+**Phase 1 — Single Drone Foundations (Experimental Control Layer)**
+Objective: Establish full programmatic control and telemetry over one Crazyflie.
 
-**Phase 2 — Simulation Development**
+- Validate radio communication and firmware configuration
+- Develop standalone Python tools for:
+    - Telemetry logging (battery, state estimates)
+    - Parameter inspection
+    - Safe takeoff and landing routines
+- Understand Crazyflie firmware architecture and control stack
+- Implement scripted hover and basic motion commands
 
-- Implement single drone control in Gazebo, integrating ROS2 nodes for:
-    - State estimation
-    - Command and control
-    - Basic trajectory following
-- Develop and test relative positioning algorithms using simulated UWB data
-- Visualize swarm behavior in RViz and validate message passing via ROS2 topics
+Outcome: A reproducible software pipeline capable of commanding and monitoring a single drone.
+Current Status: Active — telemetry and manual flight verified.
 
-**Phase 3 — Hardware Integration**
-- Assemble Crazyflie drones with UWB positioning decks
-- Establish ROS2 to Crazyflie communication link with radio interface
-- Test individual drone flight stability and control responsiveness in a lab environment
 
-**Phase 4 — Swarm Coordination**
-- Extend control algorithms to enable coordinated motion between drones
-- Implement orbit and follow behaviors while maintaining relative positioning
-- Add safety protocols (collision avoidance, emergency landing triggers)
+**Phase 2 — Controlled Autonomy (Single Agent)**
+Objective: Move from manual control to scripted behaviors.
 
-**Phase 5 — Validation & Demonstration**
-- Compare simulation and experimental performance, refining parameters
-- Record demonstration video showcasing swarm behavior and technical architecture
-- Publish technical write up detailing design choices, challenges, and solutions
+- Implement:
+    - Programmatic takeoff / hover / land
+    - Position hold using Flow Deck
+    - Velocity-based control primitives
+- Develop modular Python control scripts structured like ROS nodes
+- Log and analyze stability performance
 
-**Key Technologies:**
-- ROS2 (node-based control, DDS communication)
-- Gazebo (physics-based simulation)
-- Crazyflie 2.1 drones with UWB localization
-- Python / C++ for control logic and hardware interfacing
-- RViz for visualization and debugging
+Outcome: A stable, software-controlled single drone with repeatable behavior.
 
-*Status*: In progress — system architecture defined, simulation environment setup underway.
+
+**Phase 3 — Relative Localization (UWB Integration)**
+Objective: Introduce UWB positioning for spatial awareness.
+
+- Integrate Loco Positioning Deck
+- Configure anchor nodes
+- Validate absolute positioning indoors
+- Analyze noise and drift characteristics
+
+Outcome: Reliable indoor position estimates for autonomous control.
+
+
+**Phase 4 — Dual Drone Communication & Coordination**
+Objective: Establish synchronized control across two agents.
+
+- Implement separate control pipelines for two Crazyflies
+- Validate simultaneous flight
+- Implement:
+    - Leader–Follower behavior
+    - Relative distance maintenance
+    - Simple orbit maneuver
+
+Outcome: Coordinated multi-agent behavior in a controlled indoor space.
+
+
+**Phase 5 — Robustness & Expansion**
+Objective: Harden the system and extend its capabilities.
+
+- Add safety mechanisms:
+    - Low battery auto-land
+    - Loss-of-signal failsafe
+    - Distance threshold abort
+- Compare experimental performance to lightweight simulation models
+- Record technical demonstration
+
+Outcome: A documented dual-drone swarm prototype suitable for portfolio and research presentation.
+
+
+**Key Technologies**
+- Crazyflie 2.1 (Brushed platform)
+- Crazyradio 2.0
+- Flow Deck v2
+- Multi-Ranger Deck
+- UWB Loco Positioning System (planned)
+- Python (cflib)
+- ROS2 (future integration layer)
+- Embedded control theory principles
+
+**Status**
+- Hardware operational
+- Telemetry pipeline functional
+- Entering Phase 1: Experimental Control Layer
+    - See the devlog for more!
