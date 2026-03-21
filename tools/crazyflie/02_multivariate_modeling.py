@@ -73,13 +73,17 @@ def main() -> int:
             # LOGGING CONFIGURATION
             # "pm.vbat" is the battery voltage variable exposed by the firmware.
             logconf = LogConfig(name="Battery", period_in_ms=int(1000 / args.rate)) # Telemetry request setup (which variable to gather and how often)
-            logconf.add_variable("pm.vbat", "float")                                # Rate = 10Hz, then 1000 / 10 = 100ms
+                                                                                    # Rate = 10Hz, then 1000 / 10 = 100ms
 
-            latest = {"vbat": None}     # Place to store the newest value when callback runs asynchronously
+            logconf.add_variable("pm.vbat", "float")            # Add the battery voltage reading as a float           
+            logconf.add_variable("stateEstimate.z", "float")    # Add the z height reading as a float
 
-            def on_log_data(timestamp, data, logconf):      # CALLBACK FUNCTION that triggers when telemtry packet arrives
-                latest["vbat"] = data.get("pm.vbat", None)  # Grabs latest battery data and stores it
+            latest = {"vbat": None, "z": None}     # Place to store the newest value when callback runs asynchronously for both vars
 
+            def on_log_data(timestamp, data, logconf):              # CALLBACK FUNCTION that triggers when telemtry packet arrives, grabs and stores latest data
+                latest["vbat"] = data.get("pm.vbat", None)          # pm = power management, vbat = battery voltage
+                latest["z"] = data.get("stateEstimate.z", None)     # stateEstimate = state variable, z = z distance (height)
+                                                            
             def on_log_error(logconf, msg):                 # If callback has problem then print error
                 logging.error("Log error: %s", msg)
                                                                 # Register the log config and callbacks
@@ -90,13 +94,31 @@ def main() -> int:
             logconf.start()                                                                 # Start sending telemetry packets
             logging.info("Logging started. Running for %.1f seconds...", args.seconds)      # In this configuration
 
-            t_end = time.time() + args.seconds                          # Sets when script should stop
-            while time.time() < t_end:                                  # This loop does not receive telemtry data directly (only the callback does)
-                v = latest["vbat"]                                      # It simply reads the latest value, prints it, waits, then repeats
+            t_end = time.time() + args.seconds          # Sets when script should stop
+            while time.time() < t_end:                  # This loop does not receive telemtry data directly (only the callback does)
+                v = latest["vbat"]                      # Reads the latest values, prints them, waits, then repeats
+                z = latest["z"]
+
                 if v is not None:
-                    print(f"Battery: {v:.3f} V")                        # Prints if it is not "None"
+                    vprint = f"Battery: {v:.3f} V"                        # Prints if it is not "None"
                 else:
-                    print("Battery: (waiting for first packet...)")
+                    vprint = "Battery: (waiting...)"
+
+                if z is not None:
+                    zprint = f"Height (z): {z:.3f} m"
+                else:
+                    zprint = "Height (z): (waiting...)"
+                    
+                if z is not None:
+                    if z > 0.05:
+                        flying = "Is Flying: TRUE"
+                    else:
+                        flying = "Is Flying: FALSE"
+                else:
+                    flying = "Is Flying: (waiting...)"
+                
+                print(vprint + " | " + zprint + " | " + flying)
+                
                 time.sleep(1.0 / args.rate)
 
             logconf.stop()              # Tells the drone to stop sending log packets

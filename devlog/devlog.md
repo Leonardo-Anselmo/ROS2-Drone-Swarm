@@ -260,3 +260,20 @@ Status
 - Verified stable voltage (~4.10 V)
 - Confirmed end-to-end: hardware → radio → Python API → terminal output
 - No flight testing today — focus was purely on programmatic connection and telemetry.
+
+
+## Wednesday 03/18/2026
+### Session 1: Single Variable Telemetry Logging
+
+- Broke down the Crazyflie telemetry script and mapped out how data flows from the drone to Python. 
+- Identified connection setup, logging config, and callback function. 
+- Learned that telemetry variables come from firmware (not Python) and are received asynchronously. 
+- Big takeaway was understanding what parts of the script are standard boilerplate vs what I can modify moving forward.
+
+
+## Saturday 03/21/2026
+### Session 2: Multivariable Telemetry Logging
+
+- Expanded telemetry logging from battery-only to multi-variable logging by adding stateEstimate.z. 
+- Implemented clean asynchronous storage and a simple inferred flight-state check using a height threshold. 
+- Verified that z remains stable at rest and responds predictably to small vertical disturbances.
