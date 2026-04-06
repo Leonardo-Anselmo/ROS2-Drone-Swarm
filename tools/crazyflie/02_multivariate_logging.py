@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-battery_monitor.py
+multivariate_logging.py
 
-Connects to a Bitcraze Crazyflie via Crazyradio and prints battery voltage.
+Connects to a Bitcraze Crazyflie via Crazyradio and prints battery voltage, verticl distance, and whether the drone is flying.
 Safe: does NOT arm or send thrust commands.
 """
 

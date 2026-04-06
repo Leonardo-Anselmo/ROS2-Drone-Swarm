@@ -277,3 +277,14 @@ Status
 - Expanded telemetry logging from battery-only to multi-variable logging by adding stateEstimate.z. 
 - Implemented clean asynchronous storage and a simple inferred flight-state check using a height threshold. 
 - Verified that z remains stable at rest and responds predictably to small vertical disturbances.
+
+
+## Sunday 04/05/2026
+### Session 3: Takeoff, Hover, Land
+
+- Implemented first programmatic flight command sequence using the Crazyflie high-level commander: connect, takeoff, hover, and land. 
+- Verified that the drone follows commanded behavior reliably. Observed oscillation/wobbling during ascent, slight height loss while hovering, and instability/crash when descent was commanded too aggressively from higher altitude (1.5m over 3s). 
+- Slower landing durations were noticeably more stable.
+- Also noticed that the drone stops slightly before touching the ground, then turns off rotors and lands.
+- Had to reset Crazyflie after each flight since telemetry was drifting too much.
+- Key takeaway: command timing significantly affects flight safety and stability.
