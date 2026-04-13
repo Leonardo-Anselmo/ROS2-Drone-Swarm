@@ -58,9 +58,9 @@ def main() -> int:
             cf = scf.cf                     # Pulls out the crazyflie object (scf is drone wrapper, cf is the crazyflie object)
             hlc = cf.high_level_commander   # Accesses the highest level logic for the crazyflie
 
-            hlc.takeoff(1.0, 5.0)           # Tells the crazyflie to take off (z, t) to (z) height for (t) seconds
+            hlc.takeoff(0.5, 3.0)           # Tells the crazyflie to take off (z, t) to (z) height for (t) seconds
             time.sleep(6.0)                 # Tells the crazyflie to wait for (t) seconds
-            hlc.land(0.0, 3.0)              # Tells the crazyflie to land (z, t) at (z) meters for (t) seconds
+            hlc.land(0.0, 5.0)              # Tells the crazyflie to land (z, t) at (z) meters for (t) seconds
             time.sleep(3.0)
 
         return 0

@@ -288,3 +288,13 @@ Status
 - Also noticed that the drone stops slightly before touching the ground, then turns off rotors and lands.
 - Had to reset Crazyflie after each flight since telemetry was drifting too much.
 - Key takeaway: command timing significantly affects flight safety and stability.
+
+
+## Sunday 04/12/2026
+### Session 4: Takeoff, Go to Point, Land
+
+- Integrated flight telemetry into the position/movement script.
+- Successfully logged battery voltage plus stateEstimate.x/y/z during takeoff, movement, and landing. 
+- Verified that commanded forward motion and telemetry logging both work. 
+- Observed noticeable drift and non-vertical wobble during liftoff, suggesting future need for takeoff stability tuning and closer analysis of logged state data.
+- Need to work on fixing the takeoff wobble (perhaps a battery voltage/timing issue) and then move to waypoints.
