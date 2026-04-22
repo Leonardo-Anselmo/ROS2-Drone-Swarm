@@ -1,3 +1,4 @@
+@ -1,300 +0,0 @@
 # CREATED BY:   	Leonardo Anselmo
 # DATE CREATED: 	08/04/2025
 # LAST REVISION:	10/01/2025 
@@ -298,3 +299,38 @@ Status
 - Verified that commanded forward motion and telemetry logging both work. 
 - Observed noticeable drift and non-vertical wobble during liftoff, suggesting future need for takeoff stability tuning and closer analysis of logged state data.
 - Need to work on fixing the takeoff wobble (perhaps a battery voltage/timing issue) and then move to waypoints.
+
+## Tuesday 04/21/2026
+### Session 5: Waypoints
+
+- Implemented a waypoint sequence (square path) with full telemetry logging during flight.
+- Expanded script into a full waypoint sequence:
+    - Takeoff to 0.5 m
+    - Forward → Left → Back → Right (square path, ~0.7 m scale)
+    - Land
+- Successfully integrated continuous telemetry logging throughout all flight phases:
+    - stateEstimate.x
+    - stateEstimate.y
+    - stateEstimate.z
+    - pm.vbat
+- Verified that telemetry updates in real-time during:
+    - takeoff
+    - movement
+    - landing
+- Results:
+    - Drone successfully executed a full square trajectory using absolute position commands.
+    - Motion was generally correct, with directional transitions between waypoints.
+    - Final landing position was within approximately ±5 inches of the starting point.
+    - Height control remained relatively stable (~0.5–0.56 m during hover/movement).
+- Issues:
+    - Occasional lateral wobble during liftoff
+    - Not consistently vertical; behavior appears somewhat random between runs
+    - Position drift and overshoot
+    - Drone does not precisely hit commanded coordinates
+    - Accumulated drift over multiple waypoints
+    - Battery voltage drop observed over flight (~3.66 V → ~3.48 V)
+        - Potential impact on thrust consistency and stability
+- Takeaways:
+    - Absolute position control via go_to() works reliably at a high level, but low level accuracy is limited by estimator quality and physical conditions.
+    - Telemetry logging is essential and now provides a clear view into system behavior during flight.
+    - System is no longer in a “can it work” phase, but a “how well does it work” phase.
