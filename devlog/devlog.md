@@ -334,3 +334,63 @@ Status
     - Absolute position control via go_to() works reliably at a high level, but low level accuracy is limited by estimator quality and physical conditions.
     - Telemetry logging is essential and now provides a clear view into system behavior during flight.
     - System is no longer in a “can it work” phase, but a “how well does it work” phase.
+
+
+## Thursday 04/23/2026
+### Session 6: Flight Metrics
+
+- Objective: Evaluate and improve reliability of takeoff, hover, and landing by isolating physical and environmental factors (battery, surface, timing).
+- Work Completed:
+    - Created structured flight testing setup using:
+        - CSV logging for telemetry (x, y, z, battery)
+        - Manual flight observations (wobble, crashes, stability)
+    - Standardized test conditions:
+        - Small battery (sbat)
+        - Board surface over carpet
+        - Timing rule: 1 second per 0.2 m vertical movement
+    - Conducted multiple controlled takeoff/hover/land trials across:
+        - battery types (small vs large)
+        - surfaces (carpet vs board)
+        - varying charge levels
+- Key Results
+    - Battery Performance
+        - Identified critical threshold:
+        - < ~3.9 V → unreliable flight behavior
+        - Observed:
+            - reduced thrust
+            - delayed takeoff
+            - increased wobble
+            - frequent crashes at lower voltage
+        - Conclusion: Battery voltage is the dominant factor in system reliability
+    - Battery Weight Impact
+        - Large battery (bbat):
+            - caused delayed or failed takeoff
+            - reduced responsiveness
+            - increased instability
+        - Small battery (sbat):
+            - consistently capable of flight
+            - still unstable, but controllable
+        - Conclusion: Thrust-to-weight ratio is critical; larger battery is not viable for current control setup
+    - Surface Effects (Flow Deck)
+        - Carpet:
+            - inconsistent tracking
+            - increased drift and wobble
+        - Board:
+            - improved takeoff stability
+            - more consistent hover behavior
+        - Conclusion: Surface quality significantly impacts state estimation accuracy
+    - Timing Sensitivity
+        - Faster commands → instability or crashes
+        - Slower commands → improved success rate
+        - Conclusion: Controller requires sufficient time to reach commanded states
+    - Takeoff Behavior
+        - Observed:
+            - lateral drift during ascent
+            - inconsistent wobble (run-to-run variability)
+            - occasional crashes even under similar conditions
+            - hover phase often stabilized after takeoff
+            - landing behavior improved with slower descent
+- Key Insights
+    - System behavior is governed by: battery voltage + weight + surface + command timing
+    - Reliability is not purely a control problem — it is a system level interaction problem
+    - Telemetry logging is now enabling meaningful analysis rather than guesswork
