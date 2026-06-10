@@ -3,7 +3,7 @@
 waypoints.py
 
 Has the drone take off, move to a set of waypoints, then land.
-Safe: does NOT arm or send thrust commands.
+Warning: this script sends flight commands.
 """
 
 import argparse

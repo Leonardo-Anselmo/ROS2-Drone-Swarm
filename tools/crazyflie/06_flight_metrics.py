@@ -3,7 +3,7 @@
 flight_metrics.py
 
 Records and saves metrics of several flight types
-Safe: does NOT arm or send thrust commands.
+Warning: this script sends flight commands.
 """
 
 import argparse

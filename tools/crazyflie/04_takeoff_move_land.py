@@ -3,7 +3,7 @@
 takeoff_move_land.py
 
 Has the drone take off, move to a point, then land.
-Safe: does NOT arm or send thrust commands.
+Warning: this script sends flight commands.
 """
 
 import argparse

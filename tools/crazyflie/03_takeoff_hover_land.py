@@ -3,7 +3,7 @@
 takeoff_hover_land.py
 
 Has the drone take off, hover, then land.
-Safe: does NOT arm or send thrust commands.
+Warning: this script sends flight commands.
 """
 
 import argparse     # Allows passage of options from terminal like --seconds 10
