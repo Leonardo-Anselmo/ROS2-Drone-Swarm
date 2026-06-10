@@ -1,0 +1,88 @@
+carpet_sbat_takeoff_land_log
+Z = 0.5m
+Wobbly takeoff (3s)
+Wobbly hover (3s)
+Very wobbly landing (5s)
+
+carpet_sbat_takeoff_land_log_2
+Z = 0.5m
+Wobbly takeoff (3s)
+Wobbly hover (3s)
+Very wobbly landing (5s)
+
+carpet_sbat_takeoff_land_log_3
+Z = 0.5m
+Wobbly takeoff (3s)
+Wobbly hover (3s)
+Wobbly landing and crashed (5s)
+
+carpet_sbat_takeoff_land_log_4
+Z = 1.0m
+Wobbly takeoff and crashed (3s)
+
+carpet_sbat_takeoff_land_log_5
+Z = 1.0m
+Wobbly takeoff (5s)
+Wobbly hover (3s)
+Wobbly landing (5s)
+
+carpet_bbat_takeoff_land_log
+Z = 1.0m
+Steady but delayed takeoff (5s)
+Crashed during hover (3s)
+
+carpet_bbat_takeoff_land_log_2
+Z = 1.0m
+Delayed then crashed during takeoff (5s)
+
+carpet_bbat_takeoff_land_log_3
+Z = 1.0m
+Delayed but steady during takeoff (8s)
+Wobbly hover (3s)
+Slightly less wobbly landing (5s)
+
+carpet_bbat_takeoff_land_log_4
+Z = 1.0m
+Delayed then crashed during takeoff (5s)
+
+board_bbat_takeoff_land_log
+Z = 1.0m
+Delayed then barely lifted off and crashed on takeoff (8s)
+
+board_bbat_takeoff_land_log_2
+Z = 0.5m
+Delayed then barely lifted off and crashed on takeoff (8s)
+
+carpet_bbat_takeoff_land_log_5
+Z = 1.0m
+Delayed then barely lifted off and crashed on takeoff (8s)
+
+board_sbat_takeoff_land_log
+Z = 1.0
+Somewhat smooth takeoff (5s)
+Wobbly hover (3s)
+Crashed on landing (5s)
+
+board_sbat_takeoff_land_log_3
+Z = 1.0
+Moved significantly far away during takeoff (5s)
+Hovered steadily (3s)
+Rushed the landing but was steady (5s)
+
+board_sbat_takeoff_land_log_4
+Z = 1.0
+Crashed on takeoff (5s)
+
+board_sbat_takeoff_land_log_5
+Z = 1.0
+Slightly wobbly takeoff with shifting (5s)
+Hovered steadily (3s)
+Steady landing, close to pad (5s)
+
+board_sbat_takeoff_land_log_5
+Z = 1.0
+Slightly wobbly takeoff with shifting (5s)
+Hovered steadily (3s)
+Wobbly landing (5s)
+
+

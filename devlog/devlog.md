@@ -394,3 +394,32 @@ Status
     - System behavior is governed by: battery voltage + weight + surface + command timing
     - Reliability is not purely a control problem — it is a system level interaction problem
     - Telemetry logging is now enabling meaningful analysis rather than guesswork
+
+## Session 7: Flight Metrics Stats
+- Objective: Improve flight testing infrastructure and continue reliability validation.
+- Completed
+    - Created new script:
+        - 07_flight_metrics_stats.py
+        - Refactored telemetry collection into reusable:
+        - run_phase()
+    - Added command-line flight mode selection:
+        - --mode takeoff
+        - --mode waypoint
+    - Continued CSV telemetry logging:
+        - timestamp, phase, battery, x, y, z
+    - Added automatic phase statistics:
+        - Voltage drop
+        - Max X displacement
+        - Max Y displacement
+        - Max Z displacement
+- Testing Results
+    - Tested new replacement batteries.
+    - New batteries showed noticeably improved flight performance and consistency.
+    - Takeoff, hover, and landing are generally reliable, but not completely accurate.
+    - Waypoint flights remain functional but occasionally exhibit large lateral drift immediately after takeoff before beginning the path.
+- Key Insight: Battery quality appears to have been a significant contributor to previous instability. The remaining waypoint issues are likely related to takeoff stabilization and state estimation rather than power availability.
+- Next Steps
+    - Investigate waypoint drift after takeoff.
+    - Add a stabilization/hover period before waypoint execution.
+    - Continue improving repeatability metrics and flight analysis.
+- Status: Flight testing framework established. Focus has shifted from basic functionality to reliability and performance characterization.
